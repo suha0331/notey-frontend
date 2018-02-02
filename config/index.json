@@ -1,0 +1,7 @@
+{
+  "dbUri": "mongodb://heroku_p14dxhq0:3hbmnjgr9u5ai2g1bjt2gb255p@ds139278.mlab.com:39278/heroku_p14dxhq0",
+  "jwtSecret": "i only love my bed and my mama, i'm sorry!"
+}
+
+// alt dbUri for local tests
+// 'mongodb://localhost/noteyDb'

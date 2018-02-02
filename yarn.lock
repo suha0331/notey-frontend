@@ -4453,7 +4453,7 @@ statuses@~1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.3.1.tgz#faf51b9eb74aaef3b3acf4ad5f61abf24cb7b93e"
 
-"stormpath-config@github:stormpath/stormpath-node-config#okta", stormpath-config@stormpath/stormpath-node-config#okta:
+stormpath-config@stormpath/stormpath-node-config#okta:
   version "0.0.27"
   resolved "https://codeload.github.com/stormpath/stormpath-node-config/tar.gz/0cf1158865646f5f3d97856b98afaacaaea8d4b9"
   dependencies:
@@ -4463,7 +4463,7 @@ statuses@~1.3.1:
     lodash "^4.0.0"
     properties-parser "^0.3.0"
 
-"stormpath@github:stormpath/stormpath-sdk-node#1.0.0-rc5":
+stormpath@stormpath/stormpath-sdk-node#1.0.0-rc5:
   version "1.0.0-rc4"
   resolved "https://codeload.github.com/stormpath/stormpath-sdk-node/tar.gz/39637f656dacc03327e1482a3f993445f7b21b4b"
   dependencies:
