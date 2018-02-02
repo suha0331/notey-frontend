@@ -2,7 +2,7 @@ import Base from './components/Base.jsx';
 import HomePage from './components/HomePage.jsx';
 import LoginPage from './containers/LoginPage.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
-import Landing from './public/index.html'
+import NoteyPage from './components/start.jsx'
 
 const routes = {
   // base component (wrapper for the whole application).
@@ -25,7 +25,7 @@ const routes = {
     },
        {
       path: '/landing',
-      component: Landing
+      component: NoteyPage
     },
 
   ]
