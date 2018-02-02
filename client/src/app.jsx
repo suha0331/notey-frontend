@@ -11,8 +11,8 @@ class App extends React.Component {
     render() {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme()}>
-    <Router history={browserHistory} routes={routes} />
-  </MuiThemeProvider>
+    			<Router history={browserHistory} routes={routes} />
+  			</MuiThemeProvider>
         )
     }
 }
