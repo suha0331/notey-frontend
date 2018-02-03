@@ -23,10 +23,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Serve up static assets
+
+// app.use(express.static("client/public"));
+
 app.use(express.static("client/build"));
 
 passport.use("local-signup", localSignup)
 passport.use("local-login", localLogin)
+
 
 // Add routes, both API and view
 app.use("/auth", authRoute);
@@ -66,6 +70,18 @@ app.post('/notes/save/:id', function (req, res){
   // Collect Note Content
   var noteContent = req.body.body;
 
+// <<<<<<< sp-frontend
+// // Set up promises with mongoose
+// mongoose.Promise = global.Promise;
+
+// // Connect to the Mongo DB
+// mongoose.connect(
+//   process.env.MONGODB_URI || 'mongodb://localhost/noteyDb',
+//   {
+//     useMongoClient: true
+//   }
+// );
+// =======
   // Collect Date
   var date = now.format("dddd, MMMM Do YYYY, h:mm:ss a")
 console.log(header)
@@ -94,6 +110,7 @@ console.log(noteContent)
       });
     }
   );
+
 
 
 // Start the API server
