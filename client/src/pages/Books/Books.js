@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
-import Jumbotron from "../../components/Jumbotron";
+// import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
+import { Col, Row} from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 
 class Books extends Component {
-  state = {
+ state = {
     books: [],
     title: "",
     synopsis: ""
@@ -44,6 +44,7 @@ class Books extends Component {
     if (this.state.title) {
       API.saveBook({
         title: this.state.title,
+        // author: this.state.author,
         synopsis: this.state.synopsis
       })
         .then(res => this.loadBooks())
@@ -53,36 +54,37 @@ class Books extends Component {
 
   render() {
     return (
-      <div class="container-fluid">
-        <Row>
+        <Row> 
+        <Col size="md-4">
             <form>
               <Input
                 value={this.state.title}
                 onChange={this.handleInputChange}
                 name="title"
-                placeholder="Title (required)"
+                placeholder=""
               />
               <TextArea
                 value={this.state.synopsis}
                 onChange={this.handleInputChange}
                 name="synopsis"
-                placeholder="Synopsis"
+                placeholder=""
               />
               <FormBtn
                 disabled={!(this.state.title)}
                 onClick={this.handleFormSubmit}
               >
-                Submit Book
+                Save
               </FormBtn>
             </form>
-
+            </Col>
+          <Col size="md-8">
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
-                  <ListItem key={book._id}>
+                 <ListItem key={book._id}>
                     <Link to={"/books/" + book._id}>
                       <strong>
-                        {book.title}
+                        {book.title} 
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
@@ -92,9 +94,8 @@ class Books extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
-
+          </Col>
         </Row>
-      </div>
     );
   }
 }
