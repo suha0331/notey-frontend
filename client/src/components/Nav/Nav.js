@@ -7,6 +7,7 @@ const Nav = () =>
           <h1>Notey</h1>
         </a>
     </div>
+
   </nav>;
 
 export default Nav;
