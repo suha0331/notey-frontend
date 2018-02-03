@@ -1,0 +1,4 @@
+{
+  "dbUri": "mongodb://localhost/noteyDb",
+  "jwtSecret": "i only love my bed and my mama, i'm sorry!"
+}
