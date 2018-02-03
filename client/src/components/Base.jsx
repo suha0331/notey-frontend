@@ -6,18 +6,11 @@ import Auth from '../modules/Auth';
 const Base = ({ children }) => (
   <div>
     <div className="top-bar">
-<nav className="navbar navbar-top">
-    <div className="container-fluid">
+  <nav className="navbar navbar-top">
       <div className="navbar-header">
-        <button type="button" className="collapsed navbar-toggle">
-          <span className="sr-only">Toggle navigation</span>
-          <span className="icon-bar" /> <span className="icon-bar" />
-          <span className="icon-bar" />
-        </button>
         <a href="/" className="navbar-brand">
-          <h1>NOTEY</h1>
+          <h1>Notey</h1>
         </a>
-      </div>
     </div>
   </nav>
 

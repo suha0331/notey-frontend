@@ -54,7 +54,8 @@ class Books extends Component {
 
   render() {
     return (
-        <Row> 
+
+        <Row>
         <Col size="md-4">
             <form>
               <Input
@@ -76,8 +77,10 @@ class Books extends Component {
                 Save
               </FormBtn>
             </form>
-            </Col>
-          <Col size="md-8">
+
+            </col>
+<Col size="md-8">
+
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
@@ -94,7 +97,8 @@ class Books extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
-          </Col>
+</Col>
+
         </Row>
     );
   }

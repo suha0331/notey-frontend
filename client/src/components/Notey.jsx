@@ -78,8 +78,7 @@ console.log(res.text);
   render() {
     return (
 
-      <div class="container-fluid">
-      
+      <div class="container-fluid"> 
         <Row>
             <form>
               <Input
