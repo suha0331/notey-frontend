@@ -13,7 +13,8 @@ const UserSchema = new mongoose.Schema(
   },
   password: String,
   name: String,
-  notes: [{ type: Schema.Types.ObjectId, ref: 'Comment'}]
+  notes: []
+  // notes: [{ type: Schema.Types.ObjectId, ref: 'Notes'}]
 }
 );
 

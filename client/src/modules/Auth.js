@@ -1,5 +1,7 @@
-class Auth {
+import jwt_decode from 'jwt-decode';
 
+class Auth {
+  static user
   /**
    * Authenticate a user. Save a token string in Local Storage
    *
@@ -9,12 +11,16 @@ class Auth {
     localStorage.setItem('token', token);
   }
 
+    static setCurrentUser(user) {
+    this.user = user
+  }
+
   /**
    * Check if a user is authenticated - check if a token is saved in Local Storage
    *
    * @returns {boolean}
    */
-  static isUserAuthenticated() {
+  static isUserAuthenticated(token) {
     return localStorage.getItem('token') !== null;
   }
 
@@ -32,7 +38,7 @@ class Auth {
    * @returns {string}
    */
 
-  static getToken() {
+  static getToken(token) {
     return localStorage.getItem('token');
   }
 
