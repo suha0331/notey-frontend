@@ -1,20 +1,107 @@
-import React, { PropTypes } from 'react';
+import React, { Component } from "react";
 import { Card, CardTitle, CardText } from 'material-ui/Card';
+import DeleteBtn from "./DeleteBtn";
+import Jumbotron from "./Jumbotron";
+import API from "../utils/API";
+import { Link } from "react-router-dom";
+import { Col, Row, Container } from "./Grid";
+import { List, ListItem } from "./List";
+import { Input, TextArea, FormBtn } from "./Form";
 
 
-const Dashboard = ({ secretData }) => (
-  <Card className="container">
-    <CardTitle
-      title="Dashboard"
-      subtitle="You should get access to this page only after authentication."
-    />
+class Dashboard extends Component {
 
-    {secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>{secretData}</CardText>}
-  </Card>
-);
 
-Dashboard.propTypes = {
-  secretData: PropTypes.string.isRequired
-};
+  state = {
+    books: [],
+    title: "",
+    synopsis: ""
+  };
+
+  componentDidMount() {
+    this.loadBooks();
+  }
+
+  loadBooks = () => {
+    API.getBooks()
+      .then(res =>
+        this.setState({ books: res.data, title: "", synopsis: "" })
+      )
+      .catch(err => console.log(err));
+  };
+
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.title) {
+      API.saveBook({
+        title: this.state.title,
+        synopsis: this.state.synopsis
+      })
+        .then(res => this.loadBooks())
+        .catch(err => console.log(err));
+    }
+  };
+
+  render() {
+    return (
+      <div class="container-fluid">
+        <Row>
+            <form>
+              <Input
+                value={this.state.title}
+                onChange={this.handleInputChange}
+                name="title"
+                placeholder="Title (required)"
+              />
+              <TextArea
+                value={this.state.synopsis}
+                onChange={this.handleInputChange}
+                name="synopsis"
+                placeholder="Synopsis"
+              />
+              <FormBtn
+                disabled={!(this.state.title)}
+                onClick={this.handleFormSubmit}
+              >
+                Submit Book
+              </FormBtn>
+            </form>
+
+            {this.state.books.length ? (
+              <List>
+                {this.state.books.map(book => (
+                  <ListItem key={book._id}>
+                    <Link to={"/books/" + book._id}>
+                      <strong>
+                        {book.title}
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                  </ListItem>
+                ))}
+              </List>
+            ) : (
+              <h3>No Results to Display</h3>
+            )}
+
+        </Row>
+      </div>
+    );
+  }
+}
+
 
 export default Dashboard;

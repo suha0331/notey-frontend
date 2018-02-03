@@ -2,13 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, IndexLink } from 'react-router';
 import Auth from '../modules/Auth';
+import Nav from "./Nav"
 
 const Base = ({ children }) => (
   <div>
     <div className="top-bar">
-      <div className="top-bar-left">
-        <IndexLink to="/">React App</IndexLink>
+<nav className="navbar navbar-top">
+    <div className="container-fluid">
+      <div className="navbar-header">
+        <button type="button" className="collapsed navbar-toggle">
+          <span className="sr-only">Toggle navigation</span>
+          <span className="icon-bar" /> <span className="icon-bar" />
+          <span className="icon-bar" />
+        </button>
+        <a href="/" className="navbar-brand">
+          <h1>NOTEY</h1>
+        </a>
       </div>
+    </div>
+  </nav>
 
             {Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
