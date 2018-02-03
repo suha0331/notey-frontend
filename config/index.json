@@ -1,4 +1,4 @@
 {
-  "dbUri": "mongodb://heroku_p14dxhq0:3hbmnjgr9u5ai2g1bjt2gb255p@ds139278.mlab.com:39278/heroku_p14dxhq0",
+  "dbUri": "mongodb://heroku_j3l9t1wl:3n0tmhl5vu0rt7bern86b6og41@ds123728.mlab.com:23728/heroku_j3l9t1wl",
   "jwtSecret": "i only love my bed and my mama, i'm sorry!"
 }
