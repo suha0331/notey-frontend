@@ -7,12 +7,10 @@ const config = require('./config/index.json');
 require('./server/models').connect(config.dbUri);
 
 const authRoute = require("./server/routes/auth.js");
-const apiRoute = require("./server/routes/api.js");
+// const apiRoute = require("./server/routes/api.js");
 
 const localSignup = require("./server/passport/local-signup.js");
 const localLogin = require("./server/passport/local-login.js");
-
-var stormpath = require('express-stormpath');
 
 
 const PORT = process.env.PORT || 3001;
@@ -62,7 +60,7 @@ var Note = require('./server/models/notes.js');
 app.post('/notes/save/:id', function (req, res){
 
   // Collect User ID
-  var userID = req.body.id
+  // var userID = mongoose.Types.ObjectId(req.params.id.toString())
   
   // Collect Header Name
   var header = req.body.header;
@@ -70,29 +68,17 @@ app.post('/notes/save/:id', function (req, res){
   // Collect Note Content
   var noteContent = req.body.body;
 
-// <<<<<<< sp-frontend
-// // Set up promises with mongoose
-// mongoose.Promise = global.Promise;
-
-// // Connect to the Mongo DB
-// mongoose.connect(
-//   process.env.MONGODB_URI || 'mongodb://localhost/noteyDb',
-//   {
-//     useMongoClient: true
-//   }
-// );
-// =======
   // Collect Date
-  var date = now.format("dddd, MMMM Do YYYY, h:mm:ss a")
+var date = now.format("dddd, MMMM Do YYYY, h:mm:ss a")
 console.log(header)
 console.log(noteContent)
 
-//     	db.users.findOneAndUpdate({_id: ObjectId("5a759be622cf9297b7e98736")}, {$push: {"notes": { header: req.body.header, 
+//db.users.findOneAndUpdate({_id: ObjectId("5a759be622cf9297b7e98736")}, {$push: {"notes": { header: req.body.header, 
 // body: req.body.body, 
 // date: Date()}
 // }})
       // Push the new Note to the list of notes in the User's info
-      User.findOneAndUpdate({'_id': userID}, 
+      User.findOneAndUpdate({'_id': req.params.id}, 
       {$push: {"notes": 
       { header: header, 
   		body: noteContent,

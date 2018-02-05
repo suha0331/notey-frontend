@@ -11,6 +11,7 @@ import Notey from './Notey.jsx'
 import Auth from '../modules/Auth';
 import Panel from './Panel';
 
+
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -19,11 +20,11 @@ class Dashboard extends Component {
         };
     };
 
-
     componentDidMount() {
-        console.log(Auth)
-        this.setState({ id: Auth.user });
+        this.setState({ id: Auth.token })
     }
+
+    
 
 
 
