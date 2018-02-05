@@ -33,7 +33,7 @@ handleFormSubmit(event) {
 
 
 request
-.post('/notes/save/'+this.props.id)
+.post('/notes/save/5a7630da178b9e0ba46832f4')
 .set('Content-Type', 'application/json')
 .send({ header: this.state.title, body: this.state.synopsis })
 .end(function(err, res){
