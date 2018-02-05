@@ -13,6 +13,13 @@ class Auth {
 
     static setCurrentUser(user) {
     this.user = user
+    console.log(user)
+  }
+
+      static setCurrentToken(token) {
+var one = jwt_decode(token);
+this.user.id = one
+console.log(this.user.id.id)
   }
 
   /**

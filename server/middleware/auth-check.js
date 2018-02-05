@@ -27,6 +27,7 @@ module.exports = (req, res, next) => {
         return res.status(401).end();
       }
       return next();
+      console.log(userId)
     });
   });
 };

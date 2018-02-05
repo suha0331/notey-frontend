@@ -2,19 +2,23 @@ import React, { Component } from 'react';
 import Notey from "./Notey.jsx"
 import Auth from '../modules/Auth';
 import Email from './Email.jsx';
+import Token from './Token.jsx';
 
 class Panel extends Component {
     constructor(props) {
         super(props);
          this.state = {
-            user: ''
+            user: '',
+            id: ''
         };
     };
 
 
     componentDidMount() {
-        console.log(Auth)
         this.setState({ user: Auth.user });
+        this.setState({ id: Auth.user.id.id });
+        // console.log(this.state.user)
+        // console.log(this.state.id)
     }
 
 
@@ -22,7 +26,8 @@ class Panel extends Component {
       
                 return (
 <div>
-<Email addy = {this.state.user.email}/>
+<Email addy = {this.state.user.email} />
+<Token token ={this.state.id} />
 </div>
 )
 
