@@ -34,6 +34,7 @@ class Dashboard extends Component {
 
     return (
     <div>
+
        <Panel />
        <Notey />
        <Results />
