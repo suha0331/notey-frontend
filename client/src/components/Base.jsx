@@ -24,9 +24,7 @@ const Base = ({ children }) => (
         </div>
       )}
 
-    </div>
 
-    { /* child component will be rendered here */ }
     {children}
 
   </div>
