@@ -13,11 +13,13 @@ import Auth from '../modules/Auth';
 class Notey extends Component {
 
 
-    constructor(props) {
+  constructor(props) {
   super(props);
 
 this.handleFormSubmit = this.handleFormSubmit.bind(this)
+
     this.state = {
+    books: [],
     id: "",
     title: "",
     synopsis: ""
@@ -37,8 +39,9 @@ handleFormSubmit(event) {
   event.preventDefault()
         console.log(this.state.id)
 
-request
+// .post('/notes/save/5a7630da178b9e0ba46832f4')
 .post("/notes/save/"+this.state.id)
+
 .set('Content-Type', 'application/json')
 .send({ header: this.state.title, body: this.state.synopsis })
 .end(function(err, res){
@@ -56,6 +59,7 @@ console.log(res.text);
     // console.log(e)
     this.setState({synopsis: e.target.value})
   }
+
   // loadBooks = () => {
   //   API.getBooks()
   //     .then(res =>
@@ -85,6 +89,7 @@ console.log(res.text);
 
       <div class="container-fluid"> 
         <Row>
+        <Col size="md-4">
             <form>
               <Input
                 onChange = {(e) => {this.handleTitleChange(e)}}
@@ -102,6 +107,29 @@ console.log(res.text);
                 Submit
               </FormBtn>
             </form>
+            </Col>
+         
+
+
+            <Col size="md-8">
+
+            {this.state.books.length ? (
+              <List>
+                {this.state.books.map(book => (
+                 <ListItem key={book._id}>
+                    <Link to={"/books/" + book._id}>
+                      <strong>
+                        {book.title} 
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                  </ListItem>
+                ))}
+              </List>
+            ) : (
+              <h3>No Results to Display</h3>
+            )}
+</Col>
         </Row>
       </div>
     );
