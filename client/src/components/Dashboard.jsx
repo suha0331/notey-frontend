@@ -8,6 +8,7 @@ import { Col, Row, Container } from "./Grid";
 import { List, ListItem } from "./List";
 import { Input, TextArea, FormBtn } from "./Form";
 import Notey from './Notey.jsx'
+import Results from './Results.jsx'
 import Auth from '../modules/Auth';
 import Panel from './Panel';
 
@@ -35,6 +36,7 @@ class Dashboard extends Component {
     <div>
        <Panel />
        <Notey />
+       <Results />
     </div>
 );
 }}

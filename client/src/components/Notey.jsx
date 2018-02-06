@@ -19,7 +19,6 @@ class Notey extends Component {
 this.handleFormSubmit = this.handleFormSubmit.bind(this)
 
     this.state = {
-    books: [],
     id: "",
     title: "",
     synopsis: ""
@@ -37,11 +36,11 @@ componentDidMount(){
 
 handleFormSubmit(event) {
   event.preventDefault()
-        console.log(this.state.id)
+        // console.log(this.state.id)
 
+request
 // .post('/notes/save/5a7630da178b9e0ba46832f4')
 .post("/notes/save/"+this.state.id)
-
 .set('Content-Type', 'application/json')
 .send({ header: this.state.title, body: this.state.synopsis })
 .end(function(err, res){
@@ -108,26 +107,6 @@ console.log(res.text);
               </FormBtn>
             </form>
             </Col>
-
-            <Col size="md-8">
-
-            {this.state.books.length ? (
-              <List>
-                {this.state.books.map(book => (
-                 <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} 
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-</Col>
         </Row>
       </div>
     );
