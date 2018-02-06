@@ -94,22 +94,20 @@ console.log(res.text);
               <Input
                 onChange = {(e) => {this.handleTitleChange(e)}}
                 name="title"
-                placeholder="Title (required)"
+                placeholder=""
               />
               <TextArea
                 onChange = {(e) => {this.handleSynopsisChange(e)}}
                 name="synopsis"
-                placeholder="Synopsis"
+                placeholder=""
               />
               <FormBtn
                 onClick={this.handleFormSubmit}
               >
-                Submit
+                Save
               </FormBtn>
             </form>
             </Col>
-         
-
 
             <Col size="md-8">
 
