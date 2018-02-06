@@ -2,16 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, IndexLink } from 'react-router';
 import Auth from '../modules/Auth';
+import Nav from './Nav'
 
 const Base = ({ children }) => (
   <div>
-    <div className="top-bar">
-    <nav className="navbar navbar-top">
-        <a href="/" className="navbar-brand">
-          <h1>Notey</h1>
-        </a>
-  </nav>
-  </div>
+  <Nav>
+  </Nav>
 
             {Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
