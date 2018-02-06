@@ -39,8 +39,9 @@ handleFormSubmit(event) {
   event.preventDefault()
         console.log(this.state.id)
 
-request
+// .post('/notes/save/5a7630da178b9e0ba46832f4')
 .post("/notes/save/"+this.state.id)
+
 .set('Content-Type', 'application/json')
 .send({ header: this.state.title, body: this.state.synopsis })
 .end(function(err, res){

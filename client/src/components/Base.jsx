@@ -6,13 +6,12 @@ import Auth from '../modules/Auth';
 const Base = ({ children }) => (
   <div>
     <div className="top-bar">
-  <nav className="navbar navbar-top">
-      <div className="navbar-header">
+    <nav className="navbar navbar-top">
         <a href="/" className="navbar-brand">
           <h1>Notey</h1>
         </a>
-    </div>
   </nav>
+  </div>
 
             {Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
