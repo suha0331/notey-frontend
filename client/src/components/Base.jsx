@@ -8,15 +8,15 @@ const Base = ({ children }) => (
   <div>
   <Nav>
   </Nav>
-
-        {Auth.isUserAuthenticated() ? (
+      {Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
-          <Link to="/logout">Log out</Link>
+          <Link to="/logout">Log Out</Link>
         </div>
-      ) : (
+      ) 
+      : (
         <div className="top-bar-right">
-          <Link to="/login">Log in</Link>
-          <Link to="/signup">Sign up</Link>
+{/*          <Link to="/login">Log In</Link>
+          <Link to="/signup">Sign Up</Link>*/}
         </div>
       )}
 
