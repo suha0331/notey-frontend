@@ -85,30 +85,26 @@ console.log(res.text);
 
   render() {
     return (
+      <Col size="md-4">
+        <form>
+          <Input
+            onChange = {(e) => {this.handleTitleChange(e)}}
+            name="title"
+            placeholder=""
+          />
+          <TextArea
+            onChange = {(e) => {this.handleSynopsisChange(e)}}
+            name="synopsis"
+            placeholder=""
+          />
+          <FormBtn
+            onClick={this.handleFormSubmit}
+          >
+            Save
+          </FormBtn>
+        </form>
+      </Col>
 
-      <div class="container-fluid"> 
-        <Row>
-        <Col size="md-4">
-            <form>
-              <Input
-                onChange = {(e) => {this.handleTitleChange(e)}}
-                name="title"
-                placeholder=""
-              />
-              <TextArea
-                onChange = {(e) => {this.handleSynopsisChange(e)}}
-                name="synopsis"
-                placeholder=""
-              />
-              <FormBtn
-                onClick={this.handleFormSubmit}
-              >
-                Save
-              </FormBtn>
-            </form>
-            </Col>
-        </Row>
-      </div>
     );
   }
 

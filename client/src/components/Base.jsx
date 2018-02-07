@@ -9,7 +9,7 @@ const Base = ({ children }) => (
   <Nav>
   </Nav>
 
-            {Auth.isUserAuthenticated() ? (
+        {Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
           <Link to="/logout">Log out</Link>
         </div>
@@ -19,7 +19,6 @@ const Base = ({ children }) => (
           <Link to="/signup">Sign up</Link>
         </div>
       )}
-
 
     {children}
 
