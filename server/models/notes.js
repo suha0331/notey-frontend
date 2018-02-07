@@ -1,20 +1,29 @@
-// // Require Mongoose + Moment
-// var mongoose = require('mongoose');
-// // Create a Schema Class
-// var Schema = mongoose.Schema;
-// // Moment Stuff
-// var moment = require('moment');
-// var now = moment();
+// Require Mongoose
+var mongoose = require('mongoose');
 
-// // Create Comment Schema
-// var NoteSchema = new Schema({
-// 	notes: { header: String}, 
-// 	body: String, 
-// 	date: Date 
-// })
+// Create a Schema Class
+var Schema = mongoose.Schema;
 
-// // Create the User model with Mongoose
-// var Note = mongoose.model('Note', NoteSchema);
+// Create Note Schema
+var NoteSchema = new Schema({
 
-// // Export the Model
-// module.exports = Note;
+  // Note Content
+  header: {
+    type: String
+  },
+    // Note Content
+  body: {
+    type: String
+  },
+  date: {
+  	type: String
+  }
+  
+});
+
+
+// Create the Note model with Mongoose
+var Note = mongoose.model( 'Note', NoteSchema);
+
+// Export the Model
+module.exports = Note;
