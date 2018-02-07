@@ -10,11 +10,11 @@ const HomePage = () => (
   <MuiThemeProvider muiTheme={getMuiTheme()}>
 	<Card className="cardBox">
 	    {Auth.isUserAuthenticated() ? (
-	        <div className="cardText">
+	        <div className="cardLog">
 	          <Link to="/logout">Log Out</Link>
 	        </div>
 	      ) : (
-	        <div className="cardText">
+	        <div className="cardLog">
 	          <Link to="/login">Log In</Link>
 	          <Link to="/signup">Sign Up</Link>
 	        </div>
