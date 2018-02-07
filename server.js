@@ -56,38 +56,23 @@ var path = require('path');
 var User = require('./server/models/user.js');
 var Note = require('./server/models/notes.js');
 
-	// Add a Note Route - **API**
+// Add a Note Route - **API**
 app.post('/notes/save/:id', function (req, res){
-
-  // Collect User ID
-
-//   var userID = "5a7630da178b9e0ba46832f4"
-
-  // var userID = mongoose.Types.ObjectId(req.params.id.toString())
-
-  
-  // Collect Header Name
-  var header = req.body.header;
-
-  // Collect Note Content
-  var noteContent = req.body.body;
-
-  // Collect Date
+    // Collect Date
 var date = now.format("dddd, MMMM Do YYYY, h:mm:ss a")
-console.log(header)
-console.log(noteContent)
 
-//db.users.findOneAndUpdate({_id: ObjectId("5a759be622cf9297b7e98736")}, {$push: {"notes": { header: req.body.header, 
-// body: req.body.body, 
-// date: Date()}
-// }})
+      var newNote = new Note({
+        header: req.body.header,
+        body: req.body.body,
+        date: date
+    });
+
+
       // Push the new Note to the list of notes in the User's info
-      User.findOneAndUpdate({'_id': req.params.id}, 
+      User.findOneAndUpdate({"_id": req.params.id}, 
       {$push: {"notes": 
-      { header: header, 
-  		body: noteContent,
-  		date: date
- 		 }}})
+       newNote
+     }})
       // execute the above query
       .exec(function(err, doc){
         // log any errors
@@ -101,6 +86,22 @@ console.log(noteContent)
     }
   );
 
+// Get All Notes From Specific User
+
+app.get("/notes", function(req, res) {
+
+    User.findOne({'_id': "5a77b71fb505b4a5384058aa"}, {"notes": [] }, function(error, found) {
+        // Throw any errors to the console
+        if (error) {
+            console.log(error);
+        }
+        // If there are no errors, send the data to the browser as json
+        else {
+            console.log(found)
+            res.json(found);
+        }
+    });
+});
 
 
 // Start the API server
