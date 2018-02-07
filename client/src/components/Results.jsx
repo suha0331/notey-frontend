@@ -19,7 +19,6 @@ class Results extends React.Component {
 
     render() {
         return (
-
             <Col size="md-8">
             {this.state.books.length ? (
               <List>
