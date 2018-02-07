@@ -1,23 +1,68 @@
 body {
   margin: 0;
   font-size: 16px;
+  font-family: 'Didact Gothic', sans-serif;
 }
 
+h1 {
+  font-family: 'Bad Script', cursive;
+  font-size: 70px;
+}
+h3 {
+  font-family: 'Didact Gothic', sans-serif;
+}
+
+
 a {
-  color: #00bcd4;
-  font-weight: bold;
-  text-decoration: none;
+  font-family: 'Dosis', sans-serif;
+  font-size: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  opacity: 1;
   transition: color 0.4s;
 }
 
-a:hover {
-  color: #1976d2;
+
+/* unvisited link */
+a:link {
+    color: #00BCD4;
+    text-decoration: none;
 }
+
+/* visited link */
+a:visited {
+    color: #f57a00;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: #00BCD4;
+}
+
+/* selected link */
+a:active {
+    color: #00BCD4;
+}
+
+
+#wrapper {
+  width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1%;
+  padding-bottom: 2%;
+}
+
 
 .text-center {
   text-align: center;
 }
 
+.navbar {
+  margin-bottom: 0;
+  border: none;
+}
 .top-bar {
   padding: 10px 15px;
   margin-bottom: 50px;
@@ -46,10 +91,28 @@ a:hover {
   margin: 0 auto;
   text-align: center;
   width: 700px;
+  height: 100%;
+  padding-bottom: 2%;
+  margin-bottom: 20px;
+}
+
+.cardBox {
+  margin: 0 auto;
+  text-align: center;
+  width: 700px;
+  height: 200px;
+  padding-bottom: 2%;
+  margin-bottom: 20px;
 }
 
 .card-heading {
   padding: 16px;
+}
+
+.cardText {
+  text-align: center;
+  padding-top: 11%;
+
 }
 
 .field-line, .button-line {

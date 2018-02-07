@@ -10,6 +10,7 @@ textarea.form-control {
     background-size: 20px 30px;
     border: none;
     border-radius: 0;
+    resize: none;
 }
 
 input.form-control {
