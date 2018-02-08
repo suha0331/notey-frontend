@@ -23,8 +23,6 @@ class Dashboard extends Component {
         };
     };
 
-
-
     componentDidMount() {
         var user  = Auth.getCurrentUser()
         this.setState({ email: user.email });
@@ -34,11 +32,11 @@ class Dashboard extends Component {
 render() {
     return (
         <div>
-    <Email addy = {this.state.email} />
-    <Token token ={this.state.id} />
-    <Notey />
-    <Results />
-    </div>
+            <Email addy = {this.state.email} />
+            <Token token ={this.state.id} />
+            <Notey />
+            <Results />
+        </div>
     );
 }
 }

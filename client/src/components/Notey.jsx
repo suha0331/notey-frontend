@@ -60,29 +60,6 @@ console.log(res.text);
     this.setState({synopsis: e.target.value})
   }
 
-  // loadBooks = () => {
-  //   API.getBooks()
-  //     .then(res =>
-  //       this.setState({ books: res.data, title: "", synopsis: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
-  // deleteBook = id => {
-  //   API.deleteBook(id)
-  //     .then(res => this.loadBooks())
-  //     .catch(err => console.log(err));
-  // };
-
-  // handleInputChange = event => {
-  //   const { value } = event.target;
-
-  //   this.setState({
-  //     title: value,
-  //     synopsis: value
-  //   });
-  // };
-
 
   render() {
     return (
@@ -108,8 +85,6 @@ console.log(res.text);
 
     );
   }
-
-
 
 
 }

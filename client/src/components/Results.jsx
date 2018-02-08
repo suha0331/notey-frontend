@@ -6,6 +6,8 @@ import DeleteBtn from "./DeleteBtn";
 import Auth from '../modules/Auth';
 import API from "../utils/API";
 import axios from 'axios';
+import { Input, TextArea, FormBtn } from "./Form";
+import Notey from "./Notey";
 
 class Results extends React.Component {
 
@@ -53,22 +55,31 @@ axios.delete("http://localhost:3001/notes/"+this.state.id+"/"+id);
 
         return (
             <Col size="md-8">
+
                 {notes.length > 0 ? (
+    
                   <div>
                   {
                     notes.map((note, index) => {
+
                       return (<div key={index} id = {note._id} className="box">
                       <DeleteBtn onClick={() => this.deleteBook(note._id)} />
+
                         <h4>{note.header}</h4>
+                  
+                   
                         <p>{note.body}</p>
+                      
                       </div>)
                     })
                   }
+
                   </div>
                 ) : (
-                    <div>NO DATA</div>
+                    <div>There are no notes to display</div>
                   )
                 }
+
             </Col>
         );
     }
