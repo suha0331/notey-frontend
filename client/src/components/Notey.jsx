@@ -78,7 +78,7 @@ console.log(res.text);
           <FormBtn
             onClick={this.handleFormSubmit}
           >
-            Save
+            Submit
           </FormBtn>
         </form>
       </Col>
