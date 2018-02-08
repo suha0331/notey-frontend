@@ -33,7 +33,7 @@ class DashboardPage extends React.Component {
         });
       }
     });
-    xhr.send();
+    // xhr.send();
   }
 
   /**

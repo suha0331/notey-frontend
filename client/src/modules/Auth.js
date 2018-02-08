@@ -12,15 +12,23 @@ class Auth {
   }
 
     static setCurrentUser(user) {
-    this.user = user
-    console.log(user)
-  }
+      this.user = user
+      localStorage.setItem('user', JSON.stringify(user));
+      console.log(user)
+    }
+ 
+    static getCurrentUser() {
+      return JSON.parse(localStorage.getItem('user')) || [];
+    }
 
-      static setCurrentToken(token) {
-var one = jwt_decode(token);
-this.user.id = one
-console.log(this.user.id.id)
-  }
+    static setCurrentToken(token) {
+      var one = jwt_decode(token);
+      this.user.id = one
+      var user = JSON.parse(localStorage.getItem('user')) || {}
+      user.id = one
+      localStorage.setItem('user', JSON.stringify(user));
+      console.log(this.user.id.id)
+    }
 
   /**
    * Check if a user is authenticated - check if a token is saved in Local Storage

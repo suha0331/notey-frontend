@@ -1,44 +1,70 @@
-import React, { Component } from "react";
-import DeleteBtn from "./DeleteBtn";
-import Jumbotron from "./Jumbotron";
-import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "./Grid";
-import { List, ListItem } from "./List";
+import React from "react";
+import {Link} from "react-router-dom";
+import {Col, Container, Row} from "./Grid";
+import {List, ListItem} from "./List";
+import Auth from '../modules/Auth';
+import axios from 'axios';
 
 class Results extends React.Component {
-    
-     constructor(props) {
+
+    constructor(props) {
         super(props);
-    this.state = {
-        books: []
-    }
+        this.state = {
+            id: "",
+            notes: []
+        }
 
     };
 
+    componentDidMount() {
+      var user  = Auth.getCurrentUser()
+      this.setState({ id:user.id.id });
+
+      axios.get('http://localhost:3001/notes/' + user.id.id)
+          .then((response) => {
+              this.setState({notes: response.data.notes})
+              console.log(this.state.notes)
+          })
+          .catch((error) => {
+              console.log(error)
+          })
+    }
+
+
+    // handleAppear() {
+    //     return (
+    //         this.state.notes.map((note, index) => {
+    //             <Col size="md-8">
+    //                 <div key={index} className="box">
+    //                     <h4>{note.header}</h4>
+    //                     <p>{note.body}</p>
+    //                 </div>
+    //             </Col>
+    //         }))
+    // }
+
 
     render() {
+        const { notes } = this.state;
+
         return (
             <Col size="md-8">
-            {this.state.books.length ? (
-              <List>
-                {this.state.books.map(book => (
-                 <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} 
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-</Col>
-
-
+                {notes.length > 0 ? (
+                  <div>
+                  {
+                    notes.map((note, index) => {
+                      return (<div key={index} className="box">
+                        <h4>{note.header}</h4>
+                        <p>{note.body}</p>
+                      </div>)
+                    })
+                  }
+                  </div>
+                ) : (
+                    <div>NO DATA</div>
+                  )
+                }
+            </Col>
         );
     }
 }

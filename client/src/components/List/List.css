@@ -31,3 +31,13 @@
 .list-overflow-container li:last-child {
   border-bottom: none;
 }
+
+.box {
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: blue;
+    display: inline-flex;
+}
