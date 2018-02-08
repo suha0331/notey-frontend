@@ -6,8 +6,8 @@ import Nav from './Nav'
 
 const Base = ({ children }) => (
   <div>
-  <Nav>
-  </Nav>
+  <Nav />
+
       {Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
           <Link to="/logout">Log Out</Link>
