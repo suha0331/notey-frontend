@@ -2,7 +2,9 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {Col, Container, Row} from "./Grid";
 import {List, ListItem} from "./List";
+import DeleteBtn from "./DeleteBtn";
 import Auth from '../modules/Auth';
+import API from "../utils/API";
 import axios from 'axios';
 
 class Results extends React.Component {
@@ -42,7 +44,12 @@ class Results extends React.Component {
     //             </Col>
     //         }))
     // }
-
+// deleteBook(id){
+// axios.delete("/notes/books/" + id);
+//   }
+//       .then(res => this.loadBooks())
+//       .catch(err => console.log(err));
+//   };
 
     render() {
         const { notes } = this.state;
@@ -54,6 +61,7 @@ class Results extends React.Component {
                   {
                     notes.map((note, index) => {
                       return (<div key={index} className="box">
+                      <DeleteBtn onClick={() => console.log("DELETE")} />
                         <h4>{note.header}</h4>
                         <p>{note.body}</p>
                       </div>)

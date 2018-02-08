@@ -104,6 +104,22 @@ app.get("/notes/:id", cors(), function(req, res) {
     });
 });
 
+// Get Specific Note from specific user
+// app.get("/notes/user/:id", cors(), function(req, res) {
+
+//     User.findOne({'_id': req.params.id}, {"notes": [] }, function(error, found) {
+//         // Throw any errors to the console
+//         if (error) {
+//             console.log(error);
+//         }
+//         // If there are no errors, send the data to the browser as json
+//         else {
+//             console.log(found)
+//             res.json(found);
+//         }
+//     });
+// });
+
 
 // Start the API server
 app.listen(PORT, function() {
