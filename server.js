@@ -59,40 +59,48 @@ var User = require('./server/models/user.js');
 var Note = require('./server/models/notes.js');
 
 // Add a Note Route - **API**
-app.post('/notes/save/:id', function (req, res){
+app.post('/notes/save/:id', function(req, res) {
     // Collect Date
-var date = now.format("dddd, MMMM Do YYYY, h:mm:ss a")
+    var date = now.format("dddd, MMMM Do YYYY, h:mm:ss a")
 
-      var newNote = new Note({
+    var newNote = new Note({
         header: req.body.header,
         body: req.body.body,
         date: date
     });
 
-
-      // Push the new Note to the list of notes in the User's info
-      User.findOneAndUpdate({"_id": req.params.id}, 
-      {$push: {"notes": 
-       newNote
-     }})
-      // execute the above query
-      .exec(function(err, doc){
-        // log any errors
-        if (err){
-          console.log(err);
+    newNote.save(function(error, note) {
+        console.log("DOES THIS EVEN WORK")
+        if (error) {
+            res.send(error);
         } else {
-          // Send Success Header
-          res.sendStatus(200);
+            // Push the new Note to the list of notes in the User's info
+            User.findOneAndUpdate({ "_id": req.params.id }, {
+                    $push: {
+                        "notes": newNote
+                    }
+                })
+                // execute the above query
+                .exec(function(err, doc) {
+                    // log any errors
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        // Send Success Header
+                        res.sendStatus(200);
+                    }
+                });
+
         }
-      });
-    }
-  );
+    })
+
+});
 
 // Get All Notes From Specific User
 
 app.get("/notes/:id", function(req, res) {
 
-    User.findOne({'_id': req.params.id}, {"notes": [] }, function(error, found) {
+    User.findOne({ '_id': req.params.id }, { "notes": [] }, function(error, found) {
         // Throw any errors to the console
         if (error) {
             console.log(error);
@@ -106,10 +114,17 @@ app.get("/notes/:id", function(req, res) {
 });
 
 // Get Specific Note from specific user
-app.delete("/notes/:userID/:noteID", function(req, res) {
-userID = req.params.userID
+app.delete("/notes/:userID/:id", function(req, res) {
+    var userID = req.params.userID
 
-    User.update({ "_id": ObjectID(userID) }, { $pull: { "notes": req.params.id } })
+
+    User.findOneAndUpdate({ "_id": mongoose.Types.ObjectId(userID.toString()) }, { $pull: { "notes": {"_id" : mongoose.Types.ObjectId(req.params.id.toString())} } }  
+        , function(err) {
+            if (err) {
+                res.send(err);
+            } else { res.send(User) }
+
+        })})
 
     // User.findOne({'_id': req.params.id}, {"notes": [] }, function(error, found) {
     //     // Throw any errors to the console
@@ -122,10 +137,21 @@ userID = req.params.userID
     //         res.json(found);
     //     }
     // });
-});
 
+
+// // Get Specific Note from specific user
+// app.delete("/notes/:id", function(req, res) {
+// // var userID = req.params.userID
+
+// Note.findByIdAndRemove(req.params.id), function(err) {
+//         if (error) {
+//             res.send(error);
+//         } else { res.send(post) }
+//     }
+
+// })
 
 // Start the API server
 app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
