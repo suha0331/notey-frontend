@@ -46,12 +46,9 @@ class Results extends React.Component {
     //             </Col>
     //         }))
     // }
-// deleteBook(id){
-// axios.delete("/notes/books/" + id);
-//   }
-//       .then(res => this.loadBooks())
-//       .catch(err => console.log(err));
-//   };
+deleteBook(id){
+axios.delete("http://localhost:3001/notes/"+this.state.id+"/"+id);
+  }
 
     render() {
         const { notes } = this.state;
@@ -65,10 +62,9 @@ class Results extends React.Component {
                   {
                     notes.map((note, index) => {
 
-                      return (<div key={index} className="box">
-                      <Notey />
-                      <DeleteBtn onClick={() => console.log("DELETE")} />
-             
+                      return (<div key={index} id = {note._id} className="box">
+                      <DeleteBtn onClick={() => this.deleteBook(note._id)} />
+
                         <h4>{note.header}</h4>
                   
                    
