@@ -1,13 +1,7 @@
 import React, { Component } from "react";
-import DeleteBtn from "./DeleteBtn";
-import Jumbotron from "./Jumbotron";
-import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "./Grid";
-import { List, ListItem } from "./List";
+import { Col } from "./Grid";
 import { Input, TextArea, FormBtn } from "./Form";
 import request from "../../node_modules/superagent/superagent";
-import Dashboard from "./Dashboard.jsx"
 import Auth from '../modules/Auth';
 
 class Notey extends Component {

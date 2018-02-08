@@ -1,10 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Col, Container, Row } from "./Grid";
-import { List, ListItem } from "./List";
+import { Col } from "./Grid";
 import DeleteBtn from "./DeleteBtn";
 import Auth from '../modules/Auth';
-import API from "../utils/API";
 import axios from 'axios';
 
 class Results extends React.Component {
@@ -29,7 +26,7 @@ class Results extends React.Component {
         axios.get('http://localhost:3001/notes/'+user.id.id)
             .then((response) => {
                 this.setState({ notes: response.data.notes })
-                console.log(this.state.notes)
+                // console.log(this.state.notes)
             })
             .catch((error) => {
                 console.log(error)

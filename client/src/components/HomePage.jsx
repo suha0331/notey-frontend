@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Card, CardTitle } from 'material-ui/Card';
+import { Card } from 'material-ui/Card';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Link, IndexLink } from 'react-router';
+import { Link } from 'react-router';
 import Auth from '../modules/Auth';
 
 const HomePage = () => (
