@@ -35,6 +35,7 @@ passport.use("local-login", localLogin)
 app.use("/auth", authRoute);
 // app.use("/api", apiRoute);
 
+app.use(cors())
 
 // Database
 // var databaseUri = 'mongodb://localhost/noteyDb';
@@ -89,7 +90,7 @@ var date = now.format("dddd, MMMM Do YYYY, h:mm:ss a")
 
 // Get All Notes From Specific User
 
-app.get("/notes/:id", cors(), function(req, res) {
+app.get("/notes/:id", function(req, res) {
 
     User.findOne({'_id': req.params.id}, {"notes": [] }, function(error, found) {
         // Throw any errors to the console
@@ -105,20 +106,23 @@ app.get("/notes/:id", cors(), function(req, res) {
 });
 
 // Get Specific Note from specific user
-// app.get("/notes/user/:id", cors(), function(req, res) {
+app.delete("/notes/:userID/:noteID", function(req, res) {
+userID = req.params.userID
 
-//     User.findOne({'_id': req.params.id}, {"notes": [] }, function(error, found) {
-//         // Throw any errors to the console
-//         if (error) {
-//             console.log(error);
-//         }
-//         // If there are no errors, send the data to the browser as json
-//         else {
-//             console.log(found)
-//             res.json(found);
-//         }
-//     });
-// });
+    User.update({ "_id": ObjectID(userID) }, { $pull: { "notes": req.params.id } })
+
+    // User.findOne({'_id': req.params.id}, {"notes": [] }, function(error, found) {
+    //     // Throw any errors to the console
+    //     if (error) {
+    //         console.log(error);
+    //     }
+    //     // If there are no errors, send the data to the browser as json
+    //     else {
+    //         console.log(found)
+    //         res.json(found);
+    //     }
+    // });
+});
 
 
 // Start the API server
