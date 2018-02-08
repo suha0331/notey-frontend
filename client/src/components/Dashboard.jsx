@@ -16,7 +16,7 @@ import Auth from '../modules/Auth';
 class Dashboard extends Component {
     constructor(props) {
         super(props);
-         this.state = {
+        this.state = {
             id: "",
             email: "",
             notes: []
@@ -26,26 +26,21 @@ class Dashboard extends Component {
 
 
     componentDidMount() {
-        this.setState({ email: Auth.user.email });
-        this.setState({ id: Auth.user.id.id })
-        // this.setState({ notes: allTHEjson })
+        var user  = Auth.getCurrentUser()
+        this.setState({ email: user.email });
+        this.setState({ id: user.id.id })
     }
 
-    
-
-
-
-
-      render() {
-
+render() {
     return (
-    <div>
+        <div>
     <Email addy = {this.state.email} />
     <Token token ={this.state.id} />
     <Notey />
     <Results />
     </div>
-);
-}}
+    );
+}
+}
 
 export default Dashboard;

@@ -26,13 +26,14 @@ this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
 componentDidMount(){
-        this.setState({ id: Auth.user.id.id });
-  }
+  var user  = Auth.getCurrentUser()
+  this.setState({ id:user.id.id });
+}
 
-  onInputChange(title, synopsis) {
-    this.setState({title}),
-    this.setState({synopsis})
-    }
+onInputChange(title, synopsis) {
+  this.setState({title}),
+  this.setState({synopsis})
+  }
 
 handleFormSubmit(event) {
   event.preventDefault()

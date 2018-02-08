@@ -5,9 +5,9 @@ const jwt = require('jsonwebtoken');
 const passport = require("passport");
 const config = require('./config/index.json');
 require('./server/models').connect(config.dbUri);
-
 const authRoute = require("./server/routes/auth.js");
 // const apiRoute = require("./server/routes/api.js");
+var cors = require('cors')
 
 const localSignup = require("./server/passport/local-signup.js");
 const localLogin = require("./server/passport/local-login.js");
@@ -15,6 +15,7 @@ const localLogin = require("./server/passport/local-login.js");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -88,9 +89,9 @@ var date = now.format("dddd, MMMM Do YYYY, h:mm:ss a")
 
 // Get All Notes From Specific User
 
-app.get("/notes", function(req, res) {
+app.get("/notes/:id", cors(), function(req, res) {
 
-    User.findOne({'_id': "5a77b71fb505b4a5384058aa"}, {"notes": [] }, function(error, found) {
+    User.findOne({'_id': req.params.id}, {"notes": [] }, function(error, found) {
         // Throw any errors to the console
         if (error) {
             console.log(error);
