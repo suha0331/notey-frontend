@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { List, ListItem } from "./List";
+import { Col } from "./Grid";
 import Email from './Email.jsx';
 import Token from './Token.jsx';
 import Notey from './Notey.jsx'
@@ -25,7 +26,7 @@ class Dashboard extends Component {
 
   componentDidMount() {
      var user  = Auth.getCurrentUser()
-        this.setState({ email: user.email });
+        this.setState({ name: user.name });
         this.setState({ id: user.id.id })
         this.loadBooks()
 
@@ -53,7 +54,6 @@ render() {
             <Email name = {this.state.name} />
             </div>
         </Col>
-<!--     <Token token ={this.state.id} /> -->
     <Notey  loadBooks={this.loadBooks}/>
     <Results userId={ this.state.id} loadBooks={this.loadBooks} notes={this.state.notes}/>
         </div>

@@ -36,7 +36,9 @@ onInputChange(title, synopsis) {
   this.setState({synopsis})
   }
 
-handleFormSubmit(event) {
+
+
+handleFormSubmit(event , title, synopsis) {
   event.preventDefault()
         // console.log(this.state.id)
 
@@ -52,7 +54,12 @@ request
   //}, 500)
 }); 
 
+    this.setState({ title: "" })
+    this.setState({ synopsis: "" })
+
+
   }
+
 
   handleTitleChange(e) {
     // console.log(e)
@@ -72,7 +79,7 @@ request
 
 
   render() {
-    const { synopsis, showList } = this.state;
+    const { title,synopsis, showList } = this.state;
     const list = synopsis.split('\n');
     return (
       <Col size="md-4">
@@ -82,7 +89,7 @@ request
           <Input
             onChange = {(e) => {this.handleTitleChange(e)}}
             name="title"
-            placeholder=""
+            value={title}
           />
           { !showList && 
             <TextArea
