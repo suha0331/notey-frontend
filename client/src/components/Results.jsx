@@ -81,6 +81,7 @@ axios.delete("http://localhost:3001/notes/"+this.state.id+"/"+id);
                   )
                 }
 
+
             </Col>
         );
     }
