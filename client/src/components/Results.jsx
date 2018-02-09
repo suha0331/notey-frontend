@@ -87,6 +87,7 @@ class Results extends React.Component {
                   )
                 }
 
+
             </Col>
         );
     }

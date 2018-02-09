@@ -4,9 +4,9 @@ class Email extends React.Component {
 	
     render() {
         return (
-     <p className="App-intro">
-				Logged In User is: {this.props.addy}
-				</p>
+     <h4 className="App-intro">
+				Welcome, {this.props.name}
+				</h4>
                 
         );
     }
