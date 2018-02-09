@@ -78,7 +78,7 @@ console.log(res.text);
           <FormBtn
             onClick={this.handleFormSubmit}
           >
-            Submits
+            Submit
           </FormBtn>
         </form>
       </Col>

@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Col, Container, Row } from "./Grid";
-import { List, ListItem } from "./List";
+import {Link} from "react-router-dom";
+import {Col, Container, Row} from "./Grid";
+import {List, ListItem} from "./List";
 import DeleteBtn from "./DeleteBtn";
 import Auth from '../modules/Auth';
 import API from "../utils/API";
@@ -19,21 +19,17 @@ class Results extends React.Component {
     };
 
     componentDidMount() {
-        this.loadBooks()
-    }
+      var user  = Auth.getCurrentUser()
+      this.setState({ id:user.id.id });
 
-
-    loadBooks() {
-        var user = Auth.getCurrentUser()
-        this.setState({ id: user.id.id });
-        axios.get('http://localhost:3001/notes/'+user.id.id)
-            .then((response) => {
-                this.setState({ notes: response.data.notes })
-                console.log(this.state.notes)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+      axios.get('http://localhost:3001/notes/' + user.id.id)
+          .then((response) => {
+              this.setState({notes: response.data.notes})
+              console.log(this.state.notes)
+          })
+          .catch((error) => {
+              console.log(error)
+          })
     }
 
 
@@ -48,11 +44,9 @@ class Results extends React.Component {
     //             </Col>
     //         }))
     // }
-
-    deleteBook(id) {
-      axios.delete("http://localhost:3001/notes/" + this.state.id + "/" + id)
-      this.loadBooks()
-    }
+deleteBook(id){
+axios.delete("http://localhost:3001/notes/"+this.state.id+"/"+id);
+  }
 
     render() {
         const { notes } = this.state;
@@ -66,7 +60,7 @@ class Results extends React.Component {
                   {
                     notes.map((note, index) => {
 
-                      return (<div key={index} id = {note._id} className="box">
+                      return (<div key={index} id = {note._id} className="box" className="form-group">
                       <DeleteBtn onClick={() => this.deleteBook(note._id)} />
 
                       <div className="title">
