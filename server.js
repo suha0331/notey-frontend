@@ -8,6 +8,19 @@ const authRoute = require("./server/routes/auth.js");
 // const apiRoute = require("./server/routes/api.js");
 var cors = require('cors')
 
+// Database
+// var databaseUri = 'mongodb://localhost/noteyDb';
+
+if(process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  require('./server/models').connect(config.dbUri);
+}
+
+var db = mongoose.connection;
+// --------------------------------------------------------
+
+
 const localSignup = require("./server/passport/local-signup.js");
 const localLogin = require("./server/passport/local-login.js");
 
@@ -36,16 +49,6 @@ app.use("/auth", authRoute);
 
 app.use(cors())
 
-Database
-// var databaseUri = 'mongodb://localhost/noteyDb';
-
-if(process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
-require('./server/models').connect(config.dbUri);
-}
-var db = mongoose.connection;
---------------------------------------------------------
 
 // const express = require('express');
 var router = express.Router();
