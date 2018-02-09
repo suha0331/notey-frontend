@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col } from "./Grid";
 import { Input, TextArea, FormBtn } from "./Form";
-import request from "../../node_modules/superagent/superagent";
+import request from "superagent";
 import Auth from '../modules/Auth';
 import BulletBtn from './BulletBtn';
 
