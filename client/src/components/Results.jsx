@@ -28,11 +28,10 @@ class Results extends React.Component {
                   {
                     notes.map((note, index) => {
 
-                      return (<div key={index} id = {note._id} className="box">
-                      <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
-
-
+                      return (<div key={index} id = {note._id}>
                       <div className="title">
+                                            <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
+
                         <h4>{note.header}</h4>
                       </div>
                       
