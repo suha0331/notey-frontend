@@ -32,24 +32,31 @@
   border-bottom: none;
 }
 
-.title {
-  height: 38px;
-}
 
 
-.box {
+/*.box {
     height: 274px;
-    width: 360px;
     background-color: #FCF5C7;
     line-height: 30px;
     border: none;
     border-radius: 0;
     resize: none;
-    margin-top: -10px;
-    margin-bottom: 50px;
+    margin-top: -20px;
+    margin-bottom: 70px;
+
+}
+*/
+.title {
+  width: 329px;
+  height: 39px;
+  background-color: #FCF5C7;
+  border: none;
+  border-radius: 0;
+   margin-top: -10px;
 }
 
 .body {
+    width: 329px;
     background-image: repeating-linear-gradient(to right, transparent 5px, transparent 1px), linear-gradient(#5CC9EF 1px, transparent 1px);
     background-size: 20px 30px;
     height: 235px;
@@ -58,6 +65,7 @@
     border: none;
     border-radius: 0;
     resize: none;
+   
 
 
 }

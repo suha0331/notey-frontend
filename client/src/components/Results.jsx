@@ -7,20 +7,6 @@ import axios from 'axios';
 class Results extends React.Component {
 
 
-
-
-    // handleAppear() {
-    //     return (
-    //         this.state.notes.map((note, index) => {
-    //             <Col size="md-8">
-    //                 <div key={index} className="box">
-    //                     <h4>{note.header}</h4>
-    //                     <p>{note.body}</p>
-    //                 </div>
-    //             </Col>
-    //         }))
-    // }
-
     deleteBook(userId, id) {
       axios.delete("http://localhost:3001/notes/" + userId + "/" + id)
       .then(() => {
@@ -28,6 +14,7 @@ class Results extends React.Component {
       })
       
     }
+
 
     render() {
        const { notes, userId } = this.props;
@@ -40,8 +27,10 @@ class Results extends React.Component {
                   <div>
                   {
                     notes.map((note, index) => {
+
                       return (<div key={index} id = {note._id} className="box">
                       <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
+
 
                       <div className="title">
                         <h4>{note.header}</h4>
@@ -62,6 +51,7 @@ class Results extends React.Component {
                     <div>There are no notes to display</div>
                   )
                 }
+
 
             </Col>
         );

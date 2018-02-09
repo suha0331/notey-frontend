@@ -12,6 +12,7 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            name: "",
             id: "",
             email: "",
             notes: []
@@ -22,12 +23,12 @@ class Dashboard extends Component {
 
     };
 
-
   componentDidMount() {
      var user  = Auth.getCurrentUser()
         this.setState({ email: user.email });
         this.setState({ id: user.id.id })
         this.loadBooks()
+
     }
 
     loadBooks() {
@@ -47,11 +48,16 @@ class Dashboard extends Component {
 render() {
     return (
         <div>
-    <Email addy = {this.state.email} />
-    <Token token ={this.state.id} />
+         <Col size="md-12">
+            <div className="top-bar-right">
+            <Email name = {this.state.name} />
+            </div>
+        </Col>
+<!--     <Token token ={this.state.id} /> -->
     <Notey  loadBooks={this.loadBooks}/>
     <Results userId={ this.state.id} loadBooks={this.loadBooks} notes={this.state.notes}/>
-    </div>
+        </div>
+
     );
 }
 }
