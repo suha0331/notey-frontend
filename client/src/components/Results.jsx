@@ -6,32 +6,7 @@ import axios from 'axios';
 
 class Results extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: "",
-            notes: []
-        }
 
-    };
-
-    componentDidMount() {
-        this.loadBooks()
-    }
-
-
-    loadBooks() {
-        var user = Auth.getCurrentUser()
-        this.setState({ id: user.id.id });
-        axios.get('http://localhost:3001/notes/'+user.id.id)
-            .then((response) => {
-                this.setState({ notes: response.data.notes })
-                // console.log(this.state.notes)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    }
 
 
     // handleAppear() {
@@ -46,13 +21,16 @@ class Results extends React.Component {
     //         }))
     // }
 
-    deleteBook(id) {
-      axios.delete("http://localhost:3001/notes/" + this.state.id + "/" + id)
-      this.loadBooks()
+    deleteBook(userId, id) {
+      axios.delete("http://localhost:3001/notes/" + userId + "/" + id)
+      .then(() => {
+        return this.props.loadBooks()
+      })
+      
     }
 
     render() {
-        const { notes } = this.state;
+       const { notes, userId } = this.props;
 
         return (
             <Col size="md-8">
@@ -62,16 +40,17 @@ class Results extends React.Component {
                   <div>
                   {
                     notes.map((note, index) => {
-
                       return (<div key={index} id = {note._id} className="box">
-                      <DeleteBtn onClick={() => this.deleteBook(note._id)} />
+                      <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
 
                       <div className="title">
                         <h4>{note.header}</h4>
                       </div>
                       
                       <div className="body">
-                        <p>{note.body}</p>
+                        <ul>
+                          { note.body.split('\n').map((noteLine, key) => <li key={key}>{noteLine.trim()}</li>)}
+                       </ul>
                         </div>
               
                       </div>)
