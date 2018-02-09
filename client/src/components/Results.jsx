@@ -8,7 +8,7 @@ class Results extends React.Component {
 
 
     deleteBook(userId, id) {
-      axios.delete("http://localhost:3001/notes/" + userId + "/" + id)
+      axios.delete("/notes/" + userId + "/" + id)
       .then(() => {
         return this.props.loadBooks()
       })
@@ -22,7 +22,7 @@ class Results extends React.Component {
         return (
             <Col size="md-8">
 
-                {notes.length > 0 ? (
+                { notes.length > 0 ? (
     
                   <div>
                   {
@@ -30,7 +30,7 @@ class Results extends React.Component {
 
                       return (<div key={index} id = {note._id}>
                       <div className="title">
-                                            <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
+                      <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
 
                         <h4>{note.header}</h4>
                       </div>
