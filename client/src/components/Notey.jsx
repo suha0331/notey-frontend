@@ -1,14 +1,9 @@
 import React, { Component } from "react";
-import DeleteBtn from "./DeleteBtn";
-import Jumbotron from "./Jumbotron";
-import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "./Grid";
-import { List, ListItem } from "./List";
+import { Col } from "./Grid";
 import { Input, TextArea, FormBtn } from "./Form";
 import request from "../../node_modules/superagent/superagent";
-import Dashboard from "./Dashboard.jsx"
 import Auth from '../modules/Auth';
+import BulletBtn from './BulletBtn';
 
 class Notey extends Component {
 
@@ -17,11 +12,17 @@ class Notey extends Component {
   super(props);
 
 this.handleFormSubmit = this.handleFormSubmit.bind(this)
+this.bulletTime = this.bulletTime.bind(this)
+this.handleSynopsisChange = this.handleSynopsisChange.bind(this)
 
     this.state = {
     id: "",
     title: "",
-    synopsis: ""
+    synopsis: "",
+
+
+    showList: false,
+    text: ''
     }
   }
 
@@ -44,8 +45,11 @@ request
 .post("/notes/save/"+this.state.id)
 .set('Content-Type', 'application/json')
 .send({ header: this.state.title, body: this.state.synopsis })
-.end(function(err, res){
-console.log(res.text);
+.end((err, res) => {
+  console.log(res.text);
+ // setTimeout(() => {
+    this.props.loadBooks()
+  //}, 500)
 }); 
 
   }
@@ -60,21 +64,51 @@ console.log(res.text);
     this.setState({synopsis: e.target.value})
   }
 
+  bulletTime() {
+  console.log("bring me bullets")
+              this.setState({ showList: !this.state.showList})
+
+  }
+
 
   render() {
+    const { synopsis, showList } = this.state;
+    const list = synopsis.split('\n');
     return (
       <Col size="md-4">
         <form>
+          <BulletBtn
+          onClick={this.bulletTime} />
           <Input
             onChange = {(e) => {this.handleTitleChange(e)}}
             name="title"
             placeholder=""
           />
-          <TextArea
-            onChange = {(e) => {this.handleSynopsisChange(e)}}
-            name="synopsis"
-            placeholder=""
-          />
+          { !showList && 
+            <TextArea
+              onChange = {this.handleSynopsisChange}
+            
+              name="synopsis"
+              value={synopsis}
+              placeholder=""
+            />
+          }
+          {
+            showList &&
+            <ul>
+              { list
+                .map( (line, index) => 
+                  <li key={index}><input onChange={(e) =>{
+                    const newList = [...list];
+                    newList[index] = e.target.value;
+                    this.setState({
+                      synopsis: newList.join('\n')
+                    })
+                 }} value={line.trim()}/></li>
+                )
+              }
+            </ul>
+          }
           <FormBtn
             onClick={this.handleFormSubmit}
           >

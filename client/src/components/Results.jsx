@@ -1,55 +1,23 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {Col, Container, Row} from "./Grid";
-import {List, ListItem} from "./List";
+import { Col } from "./Grid";
 import DeleteBtn from "./DeleteBtn";
 import Auth from '../modules/Auth';
-import API from "../utils/API";
 import axios from 'axios';
 
 class Results extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: "",
-            notes: []
-        }
 
-    };
-
-    componentDidMount() {
-      var user  = Auth.getCurrentUser()
-      this.setState({ id:user.id.id });
-
-      axios.get('http://localhost:3001/notes/' + user.id.id)
-          .then((response) => {
-              this.setState({notes: response.data.notes})
-              console.log(this.state.notes)
-          })
-          .catch((error) => {
-              console.log(error)
-          })
+    deleteBook(userId, id) {
+      axios.delete("http://localhost:3001/notes/" + userId + "/" + id)
+      .then(() => {
+        return this.props.loadBooks()
+      })
+      
     }
 
 
-    // handleAppear() {
-    //     return (
-    //         this.state.notes.map((note, index) => {
-    //             <Col size="md-8">
-    //                 <div key={index} className="box">
-    //                     <h4>{note.header}</h4>
-    //                     <p>{note.body}</p>
-    //                 </div>
-    //             </Col>
-    //         }))
-    // }
-deleteBook(id){
-axios.delete("http://localhost:3001/notes/"+this.state.id+"/"+id);
-  }
-
     render() {
-        const { notes } = this.state;
+       const { notes, userId } = this.props;
 
         return (
             <Col size="md-8">
@@ -60,15 +28,18 @@ axios.delete("http://localhost:3001/notes/"+this.state.id+"/"+id);
                   {
                     notes.map((note, index) => {
 
-                      return (<div key={index} id = {note._id} className="box" className="form-group">
-                      <DeleteBtn onClick={() => this.deleteBook(note._id)} />
+                      return (<div key={index} id = {note._id} className="box">
+                      <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
+
 
                       <div className="title">
                         <h4>{note.header}</h4>
                       </div>
                       
                       <div className="body">
-                        <p>{note.body}</p>
+                        <ul>
+                          { note.body.split('\n').map((noteLine, key) => <li key={key}>{noteLine.trim()}</li>)}
+                       </ul>
                         </div>
               
                       </div>)

@@ -1,17 +1,12 @@
 import React, { Component } from "react";
-import { Card, CardTitle, CardText } from 'material-ui/Card';
-import DeleteBtn from "./DeleteBtn";
-import Jumbotron from "./Jumbotron";
-import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "./Grid";
 import { List, ListItem } from "./List";
-import { Input, TextArea, FormBtn } from "./Form";
 import Email from './Email.jsx';
 import Token from './Token.jsx';
 import Notey from './Notey.jsx'
 import Results from './Results.jsx'
 import Auth from '../modules/Auth';
+import axios from 'axios';
+
 
 class Dashboard extends Component {
     constructor(props) {
@@ -22,14 +17,33 @@ class Dashboard extends Component {
             email: "",
             notes: []
         };
+
+
+        this.loadBooks = this.loadBooks.bind(this)
+
     };
 
-    componentDidMount() {
-        var user  = Auth.getCurrentUser()
-        this.setState({ name: user.name });
+  componentDidMount() {
+     var user  = Auth.getCurrentUser()
         this.setState({ email: user.email });
-        this.setState({ id: user.id.id });
+        this.setState({ id: user.id.id })
+        this.loadBooks()
+
     }
+
+    loadBooks() {
+        const user = Auth.getCurrentUser()
+        axios.get('http://localhost:3001/notes/'+user.id.id)
+            .then((response) => {
+                this.setState({ notes: response.data.notes })
+                // console.log(this.state.notes)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+
 
 render() {
     return (
@@ -39,10 +53,11 @@ render() {
             <Email name = {this.state.name} />
             </div>
         </Col>
-{/*          <Token token ={this.state.id} />*/}
-            <Notey />
-            <Results />
+<!--     <Token token ={this.state.id} /> -->
+    <Notey  loadBooks={this.loadBooks}/>
+    <Results userId={ this.state.id} loadBooks={this.loadBooks} notes={this.state.notes}/>
         </div>
+
     );
 }
 }
