@@ -85,7 +85,7 @@ request
       <Col size="md-4">
         <form>
           <BulletBtn
-          onClick={this.bulletTime} />
+            onClick={this.bulletTime} />
           <Input
             onChange = {(e) => {this.handleTitleChange(e)}}
             name="title"
@@ -94,7 +94,6 @@ request
           { !showList && 
             <TextArea
               onChange = {this.handleSynopsisChange}
-            
               name="synopsis"
               value={synopsis}
               placeholder=""
@@ -105,13 +104,13 @@ request
             <ul>
               { list
                 .map( (line, index) => 
-                  <li key={index}><input onChange={(e) =>{
+                  <div key={index}><div onChange={(e) =>{
                     const newList = [...list];
                     newList[index] = e.target.value;
                     this.setState({
                       synopsis: newList.join('\n')
                     })
-                 }} value={line.trim()}/></li>
+                 }} value={line.trim()}/></div>
                 )
               }
             </ul>

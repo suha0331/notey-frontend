@@ -30,16 +30,15 @@ class Results extends React.Component {
 
                       return (<div key={index} id = {note._id}>
                       <div className="title">
-                                            <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
-
-                        <h4>{note.header}</h4>
+                      <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
+                      <h4>{note.header}</h4>
                       </div>
                       
                       <div className="body">
                         <ul>
                           { note.body.split('\n').map((noteLine, key) => <li key={key}>{noteLine.trim()}</li>)}
                        </ul>
-                        </div>
+                      </div>
               
                       </div>)
                     })
