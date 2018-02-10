@@ -11,13 +11,18 @@ h1 {
   font-size: 70px;
 }
 
-/*h4 {
+h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 
 }
 
-p {
-  padding-left: 10px;
-}*/
+.resultText {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 8px;
+  padding-left: 22px;
+}
 
 
 a {
