@@ -5,7 +5,7 @@
 ## About Notey
 
 Welcome to Notey!
-This is a digital bulletin board that allows you to take a "notey" and make a list of all the notes that you save. There is also a delete button if you want erase the note.s
+This is a digital bulletin board that allows you to take a "notey" and make a list of all the notes that you save. There is also a delete button if you want to erase any of the notes.
 
 ## Starting the app locally
 
