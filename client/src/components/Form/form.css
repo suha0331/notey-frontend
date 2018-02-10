@@ -1,6 +1,5 @@
 .form-group {
     margin-bottom: 0px;
- 
 }
 
 textarea.form-control {
@@ -12,6 +11,11 @@ textarea.form-control {
     border: none;
     border-radius: 0;
     resize: none;
+}
+
+textarea:focus {
+    border: solid 1px lightgrey;
+
 }
 
 input.form-control {

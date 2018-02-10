@@ -69,7 +69,8 @@ request
     const list = synopsis.split('\n');
     return (
       <Col size="md-4">
-        <form>      
+        <form>     
+        <div className="iconRow"> 
           <BulletBtn
           onClick={this.bulletTime} />
 
@@ -78,6 +79,7 @@ request
           >
             Submit
           </FormBtn>
+          </div>
 
           <Input
             onChange = {(e) => {this.handleTitleChange(e)}}

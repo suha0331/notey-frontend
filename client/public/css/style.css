@@ -22,8 +22,6 @@ h4 {
 a {
   font-family: 'Dosis', sans-serif;
   font-size: 25px;
-  padding-left: 10px;
-  padding-right: 10px;
   opacity: 1;
   transition: color 0.4s;
 }
@@ -51,8 +49,9 @@ a:active {
     color: #00BCD4;
 }
 
+
 .logo {
-  padding top: 1%;
+  padding top: 2%;
 }
 
 #wrapper {
@@ -66,9 +65,13 @@ a:active {
   padding-bottom: 1%;
 }
 
-
 .text-center {
   text-align: center;
+}
+
+.col-md-4 {
+  padding-left: 25px;
+  padding-right: 0px;
 }
 
 .navbar {
@@ -92,6 +95,8 @@ a:active {
 
 .top-bar-right {
   float: right;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .top-bar a,
@@ -139,4 +144,38 @@ a:active {
 .success-message {
   padding: 0 16px;
   color: green;
+}
+
+/**
+ * Off Canvas
+ * --------------------------------------------------
+ */
+
+ @media screen and (max-width: 1383px) {
+
+.col-md-4 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+}
+
+ @media screen and (max-width: 991px) {
+
+.col-md-4 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+}
+
+
+@media screen and (max-width: 767px) {
+
+.col-md-4 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 }
