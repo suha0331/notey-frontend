@@ -1,5 +1,5 @@
 import React from "react";
-import { Col } from "./Grid";
+import { Col, Row } from "./Grid";
 import DeleteBtn from "./DeleteBtn";
 import Auth from '../modules/Auth';
 import axios from 'axios';
@@ -21,7 +21,8 @@ class Results extends React.Component {
        const { notes, userId } = this.props;
 
         return (
-            <div className="col-12 col-sm-6 col-md-8">
+          
+            <div className="col-md-8">
 
                 { notes.length > 0 ? (
     
@@ -30,6 +31,7 @@ class Results extends React.Component {
                     notes.map((note, index) => {
 
                       return (<div key={index} id = {note._id} className="box">
+                      
                       <div className="title">
 
                         <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
@@ -40,6 +42,7 @@ class Results extends React.Component {
                       <div className="body">
                           { note.body.split('\n').map((noteLine, key) => <li key={key}>{noteLine.trim()}</li>)}
                        </div>
+                      
                 
               
                       </div>)
@@ -54,6 +57,7 @@ class Results extends React.Component {
 
 
             </div>
+      
         );
     }
 }

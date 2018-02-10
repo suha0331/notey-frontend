@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { List, ListItem } from "./List";
-import { Col } from "./Grid";
+import { Col, Row } from "./Grid";
 import Email from './Email.jsx';
 import Token from './Token.jsx';
 import Notey from './Notey.jsx'
@@ -50,11 +50,13 @@ class Dashboard extends Component {
 render() {
     return (
         <div>
+        <Row>
          <Col size="md-12">
             <div className="top-bar-right">
             <Email name = {this.state.name} />
             </div>
         </Col>
+        </Row>
     <Notey  loadBooks={this.loadBooks}/>
     <Results userId={ this.state.id} loadBooks={this.loadBooks} notes={this.state.notes}/>
         </div>

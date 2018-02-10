@@ -1,17 +1,21 @@
+
 .box {
-    width: 427px;
+    width: 385px;
     height:271px;
     border: none;
     border-radius: 0;
     resize: none;
-    margin-bottom: 40px;
     padding-bottom: 8px;
     background-image: repeating-linear-gradient(to right, transparent 5px, transparent 1px), linear-gradient(#5CC9EF 1px, transparent 1px);
     background-size: 20px 31px;
     background-color: #FCF5C7;
     line-height: 30px;
-    margin: 10px;
-    margin-top:0px;
+display: inline-block;
+
+  justify-content: space-between;
+  margin: 10px;
+
+
 
 }
 
@@ -21,11 +25,14 @@
     background-color: #FCF5C7;
     border: none;
     border-radius: 0;
+    flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 
 .body {
-   width: 400px;
+   width: 385px;
     height:270px;
 /*   display: inline-flex;*/
   

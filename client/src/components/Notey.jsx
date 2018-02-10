@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col } from "./Grid";
+import { Col, Row } from "./Grid";
 import { Input, TextArea, FormBtn } from "./Form";
 import request from "superagent";
 import Auth from '../modules/Auth';
@@ -69,14 +69,16 @@ request
     const list = synopsis.split('\n');
     return (
       <Col size="md-4">
-        <form>
-         <FormBtn
+        <form>      
+          <BulletBtn
+          onClick={this.bulletTime} />
+
+           <FormBtn
             onClick={this.handleFormSubmit}
           >
             Submit
           </FormBtn>
-          <BulletBtn
-          onClick={this.bulletTime} />
+
           <Input
             onChange = {(e) => {this.handleTitleChange(e)}}
             name="title"

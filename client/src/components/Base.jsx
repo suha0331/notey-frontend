@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, IndexLink } from 'react-router';
 import Auth from '../modules/Auth';
 import Nav from './Nav'
-import { Col } from "./Grid";
+import { Col, Row } from "./Grid";
 
 const Base = ({ children }) => (
   <div>
@@ -11,11 +11,13 @@ const Base = ({ children }) => (
 
       {Auth.isUserAuthenticated() ? (
           <div>
+          <Row>
           <Col size="md-12">
               <div className="top-bar-right">
               <Link to="/logout">Log Out</Link>
               </div>
           </Col>
+          </Row>
           </div>
 
       ) 
