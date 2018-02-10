@@ -1,5 +1,6 @@
 .form-group {
     margin-bottom: 0px;
+ 
 }
 
 textarea.form-control {
@@ -19,14 +20,20 @@ input.form-control {
     border-radius: 0;
 }
 
+input:focus {
+  border: solid 1px lightgrey;
+}
+
 .btn-warning {
-    margin-top: 20px;
+    margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 9px;
     background-color: #f57a00;
     border-color: #f57a00;
-    font-family: 'Didact Gothic', sans-serif;
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 1px;
+
 }
 
 .btn-warning:link {

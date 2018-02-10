@@ -70,6 +70,11 @@ request
     return (
       <Col size="md-4">
         <form>
+         <FormBtn
+            onClick={this.handleFormSubmit}
+          >
+            Submit
+          </FormBtn>
           <BulletBtn
           onClick={this.bulletTime} />
           <Input
@@ -106,11 +111,7 @@ request
               }
             </ul>
           }
-          <FormBtn
-            onClick={this.handleFormSubmit}
-          >
-            Submit
-          </FormBtn>
+         
         </form>
       </Col>
     );
