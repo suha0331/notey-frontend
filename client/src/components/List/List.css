@@ -40,13 +40,13 @@
 
 
 ul {
-    width: 350px;
-    background-image: repeating-linear-gradient(to right, transparent 5px, transparent 1px), linear-gradient(#5CC9EF 1px, transparent 1px);
-    background-size: 20px 30px;
     height: 235px;
     background-color: #FCF5C7;
     line-height: 30px;
+    background-image: repeating-linear-gradient(to right, transparent 5px, transparent 1px), linear-gradient(#5CC9EF 1px, transparent 1px);
+    background-size: 20px 30px;
     border: none;
     border-radius: 0;
+    resize: none;
   }
 
