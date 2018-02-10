@@ -1,10 +1,11 @@
 # Create React Express App
 
-## About This Boilerplate
+![alt tag](./client/src/components/Nav/img/notey_logo.png)
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## About Notey
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+Welcome to Notey!
+This is a digital bulletin board that allows you to take a "notey" and make a list of all the notes that you save. There is also a delete button if you want erase the note.s
 
 ## Starting the app locally
 
