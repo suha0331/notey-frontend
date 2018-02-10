@@ -9,7 +9,7 @@ class Results extends React.Component {
 
 
     deleteBook(userId, id) {
-      axios.delete("http://localhost:3001/notes/" + userId + "/" + id)
+      axios.delete("/notes/" + userId + "/" + id)
       .then(() => {
         return this.props.loadBooks()
       })
@@ -23,7 +23,7 @@ class Results extends React.Component {
         return (
             <div className="col-12 col-sm-6 col-md-8">
 
-                {notes.length > 0 ? (
+                { notes.length > 0 ? (
     
                   <div>
                   {
@@ -31,8 +31,10 @@ class Results extends React.Component {
 
                       return (<div key={index} id = {note._id} className="box">
                       <div className="title">
+
                         <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
                         <h4 className="resultText">{note.header}</h4>
+
                       </div>
                       
                       <div className="body">

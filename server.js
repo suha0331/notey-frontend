@@ -8,6 +8,11 @@ const authRoute = require("./server/routes/auth.js");
 // const apiRoute = require("./server/routes/api.js");
 var cors = require('cors')
 
+// Import the User and Note models
+var User = require('./server/models/user.js');
+var Note = require('./server/models/notes.js');
+
+
 // Database
 // var databaseUri = 'mongodb://localhost/noteyDb';
 
@@ -56,10 +61,6 @@ var moment = require('moment');
 var now = moment();
 // console.log(now.format("dddd, MMMM Do YYYY, h:mm:ss a"))
 var path = require('path');
-
-// Import the User and Note models
-var User = require('./server/models/user.js');
-var Note = require('./server/models/notes.js');
 
 // Add a Note Route - **API**
 app.post('/notes/save/:id', function(req, res) {

@@ -10,6 +10,7 @@ import axios from 'axios';
 
 
 class Dashboard extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -34,7 +35,7 @@ class Dashboard extends Component {
 
     loadBooks() {
         const user = Auth.getCurrentUser()
-        axios.get('http://localhost:3001/notes/'+user.id.id)
+        axios.get('/notes/'+user.id.id)
             .then((response) => {
                 this.setState({ notes: response.data.notes })
                 // console.log(this.state.notes)
