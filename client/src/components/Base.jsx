@@ -13,7 +13,7 @@ const Base = ({ children }) => (
           <div>
           <Row>
           <Col size="md-12">
-              <div className="top-bar-right">
+              <div className="top-bar-right" id="logout">
               <Link to="/logout">Log Out</Link>
               </div>
           </Col>

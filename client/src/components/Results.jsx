@@ -4,6 +4,17 @@ import DeleteBtn from "./DeleteBtn";
 import Auth from '../modules/Auth';
 import axios from 'axios';
 import { Input, TextArea, FormBtn } from "./Form";
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+
+const Fade = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={1000}
+    classNames="fade"
+  >
+    {children}
+  </CSSTransition>
+);
 
 class Results extends React.Component {
 
@@ -16,8 +27,8 @@ class Results extends React.Component {
       
     }
 
-
     render() {
+
        const { notes, userId } = this.props;
 
         return (
@@ -31,10 +42,22 @@ class Results extends React.Component {
                     notes.map((note, index) => {
 
                       return (<div key={index} id = {note._id} className="box">
-                      
+
+
                       <div className="title">
 
-                        <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
+{/*                        <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
+*/}
+                          <Fade key={note._id}>
+                              <div>
+                       
+                                    <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
+                               
+                                    
+                              </div>
+                          </Fade>
+
+
                         <h4 className="resultText">{note.header}</h4>
 
                       </div>

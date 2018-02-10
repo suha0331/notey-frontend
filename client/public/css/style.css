@@ -24,6 +24,8 @@ a {
   font-size: 25px;
   opacity: 1;
   transition: color 0.4s;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 
@@ -107,18 +109,20 @@ a:active {
 .container {
   margin: 0 auto;
   text-align: center;
-  width: 700px;
+  width: 60%;
   height: 100%;
   padding-bottom: 2%;
   margin-bottom: 20px;
+  margin-top: 1%;
 }
 
 .cardBox {
   margin: 0 auto;
   text-align: center;
-  width: 700px;
-  height: 200px;
+  width: 60%;
+  height: auto;
   padding-bottom: 2%;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 
@@ -128,7 +132,8 @@ a:active {
 
 .cardLog {
   text-align: center;
-  padding-top: 11%;
+  padding: 50px;
+
 
 }
 
@@ -146,6 +151,11 @@ a:active {
   color: green;
 }
 
+#logout {
+  padding-left: 25px;
+  padding-right: 15px;
+}
+
 /**
  * Off Canvas
  * --------------------------------------------------
@@ -158,6 +168,16 @@ a:active {
   padding-right: 15px;
 }
 
+.cardBox {
+  width: 70%;
+}
+
+.container {
+   margin-top: 2%;
+  width: 60%;
+
+}
+
 }
 
  @media screen and (max-width: 991px) {
@@ -167,6 +187,16 @@ a:active {
   padding-right: 15px;
 }
 
+.cardBox {
+  width: 80%;
+
+}
+
+.container {
+   margin-top: 2%;
+  width: 70%;
+
+}
 
 }
 
@@ -176,6 +206,18 @@ a:active {
 .col-md-4 {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.cardBox {
+   margin-top: 5%;
+  width: 80%;
+
+}
+
+.container {
+  margin-top: 2%;
+  width: 90%;
+
 }
 
 }

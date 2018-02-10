@@ -5,7 +5,8 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "react-dom": "^15.4.0",
-    "react-scripts": "1.0.14"
+    "react-scripts": "1.0.14",
+    "react-transition-group": "^2.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -92,7 +92,7 @@ request
               onChange = {this.handleSynopsisChange}
               name="synopsis"
               value= {synopsis}
-              placeholder="Write The Body Of Your Note Here =)"
+              placeholder="Write the Body Of Your Note Here =)"
             />
           }
           {
