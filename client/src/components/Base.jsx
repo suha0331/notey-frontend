@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 import { Link, IndexLink } from 'react-router';
 import Auth from '../modules/Auth';
 import Nav from './Nav'
+import { Col } from "./Grid";
 
 const Base = ({ children }) => (
   <div>
   <Nav />
 
       {Auth.isUserAuthenticated() ? (
-        <div className="top-bar-right">
-          <span class="glyphicon glyphicon-log-out"></span>
-          <Link to="/logout">Log Out</Link>
-        </div>
+          <div>
+          <Col size="md-12">
+              <div className="top-bar-right">
+              <Link to="/logout">Log Out</Link>
+              </div>
+          </Col>
+          </div>
+
       ) 
       : (
         <div className="top-bar-right">

@@ -1,12 +1,10 @@
 import React from "react";
 import "./BulletBtn.css";
+import bullets from "./img/bullets.png"
 
-// The ...props means, spread all of the passed props onto this element
-// That way we don't have to define them all individually
 const BulletBtn = props => (
   <span className="bullet-btn" {...props}>
-     <span className="glyphicon glyphicon-chevron-up" aria-label="toggle" aria-hidden="true">
-     </span>
+  	<img src={bullets} width="42" height="27" alt={"bullets"}/>
 
   </span>
 );

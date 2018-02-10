@@ -3,6 +3,7 @@ import { Col } from "./Grid";
 import DeleteBtn from "./DeleteBtn";
 import Auth from '../modules/Auth';
 import axios from 'axios';
+import { Input, TextArea, FormBtn } from "./Form";
 
 class Results extends React.Component {
 
@@ -20,7 +21,7 @@ class Results extends React.Component {
        const { notes, userId } = this.props;
 
         return (
-            <Col size="md-8">
+            <div className="col-12 col-sm-6 col-md-8">
 
                 {notes.length > 0 ? (
     
@@ -28,17 +29,16 @@ class Results extends React.Component {
                   {
                     notes.map((note, index) => {
 
-                      return (<div key={index} id = {note._id}>
+                      return (<div key={index} id = {note._id} className="box">
                       <div className="title">
-                      <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
-                      <h4 className="resultText">{note.header}</h4>
+                        <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
+                        <h4 className="resultText">{note.header}</h4>
                       </div>
                       
                       <div className="body">
-                        <ul>
                           { note.body.split('\n').map((noteLine, key) => <li key={key}>{noteLine.trim()}</li>)}
-                       </ul>
-                      </div>
+                       </div>
+                
               
                       </div>)
                     })
@@ -51,7 +51,7 @@ class Results extends React.Component {
                 }
 
 
-            </Col>
+            </div>
         );
     }
 }
