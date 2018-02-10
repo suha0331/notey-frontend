@@ -31,7 +31,7 @@ class Results extends React.Component {
                       return (<div key={index} id = {note._id}>
                       <div className="title">
                       <DeleteBtn onClick={() => this.deleteBook(userId, note._id)} />
-                      <h4>{note.header}</h4>
+                      <h4 className="resultText">{note.header}</h4>
                       </div>
                       
                       <div className="body">

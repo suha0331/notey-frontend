@@ -10,6 +10,7 @@ const Base = ({ children }) => (
 
       {Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
+          <span class="glyphicon glyphicon-log-out"></span>
           <Link to="/logout">Log Out</Link>
         </div>
       ) 
