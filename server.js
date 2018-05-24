@@ -3,9 +3,9 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
 const passport = require("passport");
-const config = require('./config/index.json');
+const config = require('./config/index.js');
 const authRoute = require("./server/routes/auth.js");
-// const apiRoute = require("./server/routes/api.js");
+// const routes = require("./server/routes/notes.js");
 var cors = require('cors')
 
 // Import the User and Note models
@@ -16,14 +16,6 @@ var Note = require('./server/models/notes.js');
 // Database
 // var databaseUri = 'mongodb://localhost/noteyDb';
 
-if(process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
-  require('./server/models').connect(config.dbUri);
-}
-
-var db = mongoose.connection;
-// --------------------------------------------------------
 
 
 const localSignup = require("./server/passport/local-signup.js");
@@ -50,7 +42,8 @@ passport.use("local-login", localLogin)
 
 // Add routes, both API and view
 app.use("/auth", authRoute);
-// app.use("/api", apiRoute);
+// app.use("/", routes);
+
 
 app.use(cors())
 
@@ -130,8 +123,11 @@ app.delete("/notes/:userID/:id", function(req, res) {
 
         })})
 
-
-// Start the API server
-app.listen(PORT, function() {
-    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+mongoose.connect(config.MONGO_URI, (err) => {
+  if (err) throw err;
+  console.log('Database successfully connected');
+  app.listen(config.PORT, () => {
+    console.log(`App listening on PORT ${config.PORT}`);
+  });
 });
+
