@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Row } from "./Grid";
+import { Col} from "./Grid";
 import { Input, TextArea, FormBtn } from "./Form";
 import request from "superagent";
 import Auth from '../modules/Auth';
@@ -27,7 +27,7 @@ componentDidMount(){
 }
 
 onInputChange(title, synopsis) {
-  this.setState({title}),
+  this.setState({title})
   this.setState({synopsis})
   }
 
@@ -121,6 +121,5 @@ request
     );
   }
 }
-   var thisIsMyCopy = '⌾';
  
 export default Notey;

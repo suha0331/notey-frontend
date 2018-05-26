@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { List, ListItem } from "./List";
 import { Col, Row } from "./Grid";
 import Email from './Email.jsx';
-import Token from './Token.jsx';
 import Notey from './Notey.jsx'
 import Results from './Results.jsx'
 import Auth from '../modules/Auth';
