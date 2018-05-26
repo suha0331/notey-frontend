@@ -1,10 +1,8 @@
 import React from "react";
-import { Col, Row } from "./Grid";
 import DeleteBtn from "./DeleteBtn";
 import Auth from '../modules/Auth';
 import axios from 'axios';
-import { Input, TextArea, FormBtn } from "./Form";
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group'
 
 const Fade = ({ children, ...props }) => (
   <CSSTransition
